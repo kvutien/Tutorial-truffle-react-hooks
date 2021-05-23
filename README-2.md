@@ -1,4 +1,4 @@
-# Getting Started with Truffle and React
+# Development setup - Getting Started with Truffle and React
 
 ## Introduction
 
