@@ -166,7 +166,7 @@ Click on the "account" icon of MetaMask (top right) and chose "Settings", "Advan
 _Feel free to skip [this section](./README-3.md) that contains bonuses that are useful but may exceed your first-step familiarization._
 
 
-## Learn More
+## Learn More about React
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
