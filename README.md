@@ -48,23 +48,23 @@ _Feel free to skip [this section](./README-2.md) if you have already this develo
 ``` shell
 $ git clone https://github.com/kvutien/truffle-react-hooks.git 
     Cloning into 'truffle-react-hooks'...
-    remote: Enumerating objects: 35, done.
-    remote: Counting objects: 100% (35/35), done.
-    remote: Compressing objects: 100% (31/31), done.
-    remote: Total 35 (delta 4), reused 35 (delta 4), pack-reused 0
-    Receiving objects: 100% (35/35), 770.87 KiB | 4.21 MiB/s, done.
-    Resolving deltas: 100% (4/4), done.
+    remote: Enumerating objects: 34710, done.
+    remote: Counting objects: 100% (34710/34710), done.
+    remote: Compressing objects: 100% (26197/26197), done.
+    remote: Total 34710 (delta 6840), reused 34710 (delta 6840), pack-reused 0
+    Receiving objects: 100% (34710/34710), 40.60 MiB | 24.70 MiB/s, done.
+    Resolving deltas: 100% (6840/6840), done.
 $ cd truffle-react-hooks/client
 ```
 * install the dependencies
 ``` shell
 $ npm install
     ...
-    found 566 vulnerabilities (1 low, 565 high)
+    found 80 vulnerabilities (1 low, 79 moderate)
     run `npm audit fix` to fix them, or `npm audit` for details
 $
 ```
-disregard the warnings. 
+Disregard the warnings. 
 
 ## Run the demo
 We assume that you have the local blockchain `truffle develop` running.
@@ -75,7 +75,11 @@ $ truffle develop
 truffle(develop)> migrate
     Compiling your contracts...
     ===========================
-    > Everything is up to date, there is nothing to compile.
+    > Compiling ./contracts/Migrations.sol
+    > Compiling ./contracts/SimpleStorage.sol
+    > Artifacts written to /Users/kvutien/development/truffle-react-hooks/client/src/contracts
+    > Compiled successfully using:
+    - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
 
     Starting migrations...
     ======================
@@ -85,13 +89,13 @@ truffle(develop)> migrate
 
     1_initial_migration.js
     ======================
-    Deploying 'Migrations'
+    Replacing 'Migrations'
     ----------------------
-    > transaction hash:    0xc23fff0daf23c6ad8d94dc5905f8c42ed194c13f410725ba223956dac03797d1
+    > transaction hash:    0xddd621de3c74dbe90b93be4d73733f764ad6607d24b6256efbc813149cd76923
     > Blocks: 0            Seconds: 0
     > contract address:    0x597328E0Ca20b7A7FEfc399e5E36Ab4Da4A5E43A
     > block number:        1
-    > block timestamp:     1621626321
+    > block timestamp:     1621794897
     > account:             0x4d79c0d414E7E70B6323904d3A9085B86d8f82Ff
     > balance:             99.99616114
     > gas used:            191943 (0x2edc7)
@@ -106,13 +110,13 @@ truffle(develop)> migrate
 
     2_deploy_contracts.js
     =====================
-    Deploying 'SimpleStorage'
+    Replacing 'SimpleStorage'
     -------------------------
-    > transaction hash:    0xdeb51bc391752c01b61d5e925b288c69a2e426694a95444fcfdb9d6ad302ba19
+    > transaction hash:    0xff1aa320aae3a57233246a15442ad729fe202570e29bff06b72183752a5c30ff
     > Blocks: 0            Seconds: 0
     > contract address:    0x58919E4c76330DB629FC1D79bee533Fc6Aa1c4c0
     > block number:        3
-    > block timestamp:     1621626322
+    > block timestamp:     1621794897
     > account:             0x4d79c0d414E7E70B6323904d3A9085B86d8f82Ff
     > balance:             99.9933906
     > gas used:            96189 (0x177bd)
@@ -132,6 +136,7 @@ truffle(develop)> migrate
 ```
 
 * make sure once more that Metamask is using the truffle local `develop` network. Else the transaction will be refused. If this is the case, select the network and refresh the screen to reload the dApp.
+* if you have already used MetaMask on the local develop blockchain, reset the account imported from this network.
 * in another console window, run the demo by typing
 ``` shell
 $ cd client
@@ -162,7 +167,24 @@ The demo contains an automated test in JavaScript and another automated test in 
 To run the tests inside `truffle develop`, simply type `test`. All test scripts in the folder `test` are run.
 
 To run the tests from the command line, run a local blockchain network in another console and type `truffle test`
+```shell
+truffle(develop)> test
+    Using network 'develop'.
+    Compiling your contracts...
+    ===========================
+    > Compiling ./test/TestSimpleStorage.sol
+    > Artifacts written to /var/folders/9t/2kphmw596g5dvkfrp3vzc5_m0000gn/T/test--98262-AO5EsZwhCQdx
+    > Compiled successfully using:
+    - solc: 0.5.16+commit.9c3226ce.Emscripten.clang
 
+    TestSimpleStorage
+        ✓ testItStoresAValue (85ms)
+
+    Contract: SimpleStorage
+        ✓ ...should store the value 89. (97ms)
+
+    2 passing (6s)
+```
 ## Bonus 2: `build` a standalone web app
 While React is run in development, it includes many tools that are not needed in production, for example the tool to reload the web app every time we save a change in the code.
 

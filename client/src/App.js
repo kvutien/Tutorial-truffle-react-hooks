@@ -39,7 +39,7 @@ function App() {
             } catch (error) {
                 // Catch any errors for any of the above operations
                 alert(
-                    `Failed to load web3, accounts, or contract. Did you migrate the contract or installed MetaMask? Check console for details.`,
+                    `Failed to load web3, accounts, or contract. Did you migrate the contract or install MetaMask? Check console for details.`,
                 );
                 console.error(error);
             }
@@ -62,7 +62,7 @@ function App() {
                 setStorageValue (response);
             }
             catch{
-                alert('No contract deployed; please check that MetaMask is on the correct network and reload page');
+                alert('No contract deployed or account error; please check that MetaMask is on the correct network, reset the account and reload page');
             }
         }
         if(typeof(web3) != 'undefined'
