@@ -11,11 +11,11 @@ In the process, the following changes were also added:
 
 ## Purpose of the demo
 
-The Truffle Box React illustrates a large part of the  Truffle+React development lifecycle.
+The Truffle Box React illustrates a large part of the  Truffle+React development lifecycle. Its purpose is to familiarize the reader with the dApp development cycle, using Truffle.
 * Truffle is used to deploy a local test blockchain, to compile and deploy smart contracts on this blockchain and to run automated tests.
 * React is used to support JavaScript frontend development, with compile and execution for immediate visual feedback.
 
-The setup process described below go through 3 stages. The first 2 are described here mainly for the sake of completude but can usually be skipped if already done in anothe context.
+The setup process described below go through 3 stages. The first 2 are described here mainly for the sake of completude but can usually be skipped if already done in another context.
 1. **general purpose setup**: this can be skipped if the reader already installed it for other needs;
 2. **development setup**: this setup is specific to blockchain+React development, and may also exist already;
 3. **specific setup and run**: this part is specific to the demo.
@@ -67,7 +67,7 @@ $
 Disregard the warnings. 
 
 ## Run the demo
-We assume that you have the local blockchain `truffle develop` running.
+We assume that you have the local blockchain `truffle develop` running. Else see in the [development setup](./README-2.md#install-truffle).
 * Compile and deploy the smart contract on the `truffle develop` local network.
 ``` shell
 $ truffle develop
@@ -147,22 +147,24 @@ $ npm start
 ![screenshot](./screenshot.png)
 
 * once you confirm, the last line will show "The stored value is: 5". This proves that your frontend is discussing with the smart contract.
-* edit `App.js` to change the value in the line as recommended. Save. 
+* now, edit `App.js` to change the value in the line as recommended. Save. 
 * observe that the web page is refreshed, that MetaMask asks you once more to confirm a transaction, and that after you confirm the new value is displayed.
 
 ## Most frequent errors
 ### 1. `truffle develop` does nothing
-When `truffle develop` doesn't display the 10 accounts generated as shown above, this is an incompatibility betwseen `truffle 5.1` and the version of `nodeJS`. Use [nvm](https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/) (node version manager) to downgrade to `node 12.18.4`
+When `truffle develop` doesn't display the 10 accounts generated as shown above, this means it could not deploy the local blockchain due to an incompatibility betwseen `truffle 5.1` and the version of `nodeJS`. Use [nvm](https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/) (node version manager) to downgrade to `node 12.18.4`
 ``` shell
 $ nvm use 12.18.4
 ```
 ### 2. The last line still shows 'The stored value: not set yet' after MetaMask confirm
-You probably redeployed again the `truffle develop` network, making the new accounts mistmatch the nonce of the accounts imported previously in MetaMask. Click on the "account" icon of MetaMask (top right) and chose "Settings", "Advanced", "Reset account". Reload the web page.
+You probably redeployed again the `truffle develop` network, making the new accounts mistmatch the nonce of the accounts imported previously in MetaMask. 
+
+Click on the "account" icon of MetaMask (top right) and chose "Settings", "Advanced", "Reset account". Reload the web page.
 
 ## Bonus: Run Automated Tests on the demo
 The demo contains an automated test in JavaScript and another automated test in Solidity.
 * The test script in JavaScript runs tests on smart contracts that are already deployed. To execute this, you need to have the `truffle develop` network running and the smart contracts migrated.
-* The test script in Solidity tests smart contracts within the Solidity context. This is useful to test protocols that have no frontend. The automated test has the code to deploy the smart contracts and interacts directly with them.
+* The test script in Solidity tests smart contracts within the Solidity context. This is useful when you test blockchain protocols that have no frontend. The automated test has the code to deploy the smart contracts and interacts directly with them.
 
 To run the tests inside `truffle develop`, simply type `test`. All test scripts in the folder `test` are run.
 
@@ -188,7 +190,7 @@ truffle(develop)> test
 ## Bonus 2: `build` a standalone web app
 While React is run in development, it includes many tools that are not needed in production, for example the tool to reload the web app every time we save a change in the code.
 
-In production, these additions are not needed. React has a script that makes a `build` folder that contains a compacted standalone web app, ready to be served by a hosting service. Assuming that `serve` has been installed globally as shown in the [development setup](./README-2.md), it can be used to run locally the output in the folder `build`. All we need to do is to type
+In production, these additions are not needed. React has a script that makes a `build` folder that contains a compacted standalone web app, ready to be served by a hosting service. Assuming that `serve` has been installed globally as shown in the [development setup](./README-2.md#install-truffle).), it can be used to run locally the output in the folder `build`. All we need to do is to type
 ``` shell
 $ cd client
 $ npm build
