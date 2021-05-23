@@ -11,7 +11,7 @@ In the process, the following changes were also added:
 
 ## Purpose of the demo
 
-The Truffle Box React illustrates a large part of the  Truffle+React development lifecycle. Its purpose is to familiarize the reader with the dApp development cycle, using Truffle.
+The Truffle Box React illustrates a large part of the  Truffle+React development lifecycle. Its purpose is to familiarize the reader with the dApp development cycle, using Truffle and React.
 * Truffle is used to deploy a local test blockchain, to compile and deploy smart contracts on this blockchain and to run automated tests.
 * React is used to support JavaScript frontend development, with compile and execution for immediate visual feedback.
 
@@ -23,14 +23,16 @@ The setup process described below go through 3 stages. The first 2 are described
 ![Demo Lifecycle](./todos.png)
 
 ## What is not in the demo
-The deployment in production is not shown in this demo:
+The deployment in production is not included in this demo:
 * Truffle can be used to deploy in production on a public testnet or the mainnet
 * The standalone frontend code `build` made by React can be deployed in a public hosting service.
   
 This deployment stage of the lifecycle is illustrated in another demo, available at https://github.com/kvutien/ipfs-dapp.git
 
 ## Install the demo
-We'll use the console. The following installation instructions are for Linux or MacOS, that are Unix-based. If you run Windows, it is strongly recommended to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and, inside it, install an Ubuntu virtual machine. See instruction guide for both installations in this 4-minute long [YouTube clip:](https://youtu.be/8mns5yqMfZk). 
+We'll use the command line console. The following installation instructions are for Linux or MacOS, that are Unix-based. 
+
+If you run Windows, it is strongly recommended to install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) and, inside it, install an Ubuntu virtual machine. See instruction guide for both installations in this 4-minute long [YouTube clip:](https://youtu.be/8mns5yqMfZk). 
 
 ## General purpose setup
 
@@ -136,7 +138,7 @@ truffle(develop)> migrate
 ```
 
 * make sure once more that Metamask is using the truffle local `develop` network. Else the transaction will be refused. If this is the case, select the network and refresh the screen to reload the dApp.
-* if you have already used MetaMask on the local develop blockchain, reset the account imported from this network.
+* if you have already used MetaMask on the local `develop` blockchain, reset the account imported from this network.
 * in another console window, run the demo by typing
 ``` shell
 $ cd client
@@ -152,17 +154,17 @@ $ npm start
 
 ## Most frequent errors
 ### 1. `truffle develop` does nothing
-When `truffle develop` doesn't display the 10 accounts generated as shown above, this means it could not deploy the local blockchain due to an incompatibility betwseen `truffle 5.1` and the version of `nodeJS`. Use [nvm](https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/) (node version manager) to downgrade to `node 12.18.4`
+When `truffle develop` doesn't display the 10 accounts generated as shown above, this means it could not deploy the local blockchain due to an incompatibility betwseen `truffle 5.1` and the version of `nodeJS` that you're using. Use [nvm](https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/) (node version manager) to downgrade to `node 12.18.4`
 ``` shell
 $ nvm use 12.18.4
 ```
 ### 2. The last line still shows 'The stored value: not set yet' after MetaMask confirm
-You probably redeployed again the `truffle develop` network, making the new accounts mistmatch the nonce of the accounts imported previously in MetaMask. 
+You probably redeployed again the `truffle develop` network, but not reset the account previously imported in Metamask, making the new accounts mistmatch the nonce of the accounts imported previously in MetaMask. 
 
 Click on the "account" icon of MetaMask (top right) and chose "Settings", "Advanced", "Reset account". Reload the web page.
 
 ## Bonus: Run Automated Tests on the demo
-The demo contains an automated test in JavaScript and another automated test in Solidity.
+The demo contains an automated test in JavaScript and another automated test in Solidity. Test Driven Development (TDD) is strongly recommended when you develop blockchain applications because once deployed in production, a smart contract is immutable.
 * The test script in JavaScript runs tests on smart contracts that are already deployed. To execute this, you need to have the `truffle develop` network running and the smart contracts migrated.
 * The test script in Solidity tests smart contracts within the Solidity context. This is useful when you test blockchain protocols that have no frontend. The automated test has the code to deploy the smart contracts and interacts directly with them.
 
@@ -190,7 +192,7 @@ truffle(develop)> test
 ## Bonus 2: `build` a standalone web app
 While React is run in development, it includes many tools that are not needed in production, for example the tool to reload the web app every time we save a change in the code.
 
-In production, these additions are not needed. React has a script that makes a `build` folder that contains a compacted standalone web app, ready to be served by a hosting service. Assuming that `serve` has been installed globally as shown in the [development setup](./README-2.md#install-truffle).), it can be used to run locally the output in the folder `build`. All we need to do is to type
+In production, these additions are not needed anymore. React has a script that makes a `build` folder that contains a compacted standalone web app, ready to be served by a hosting service. Assuming that `serve` has been installed globally as shown in the [development setup](./README-2.md#install-serve).), it can be used to run locally the output in the folder `build`. All we need to do is to type
 ``` shell
 $ cd client
 $ npm build
