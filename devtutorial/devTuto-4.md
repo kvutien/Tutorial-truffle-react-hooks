@@ -1,4 +1,4 @@
-# Install dev environment and start from scratch (Part 2: Solidity code)
+# Install dev environment and start from scratch (Part 4: publish on Github)
 In the README of this repository, we have seen how to clone, install and run an existing dApp. Now, as said the Chinese proverb "_Give a man a bowl of rice, you feed him for one meal. Teach a man how to grow rice, you feed him for his lifetime_".
 
 Let's take advantage of the simplicity of this dApp to see how to develop starting from scratch and reach the same result. This process can be generalized to all your future developments.
@@ -60,4 +60,6 @@ truffle-react-new $ git push -u origin main
     Branch 'main' set up to track remote branch 'main' from 'origin'.
 ```
 
-Congratulations. You've created a complete dApp from scratch. The next step is to deploy it in production. This was described in another repository, a Full Stack demo with IPFS access: https://github.com/kvutien/ipfs-dapp.git
+Congratulations. You've created a complete dApp from scratch and published it. You can now check the result by cloning this repository and make a `README.md`
+
+The next step is to deploy it in production. This was described in another repository, a Full Stack demo with IPFS access: https://github.com/kvutien/ipfs-dapp.git

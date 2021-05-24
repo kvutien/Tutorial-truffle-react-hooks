@@ -1,4 +1,4 @@
-# Install dev environment and start from scratch (Part 2: Solidity code)
+# Install dev environment and start from scratch (Part 3: Frontend React code)
 In the README of this repository, we have seen how to clone, install and run an existing dApp. Now, as said the Chinese proverb "_Give a man a bowl of rice, you feed him for one meal. Teach a man how to grow rice, you feed him for his lifetime_".
 
 Let's take advantage of the simplicity of this dApp to see how to develop starting from scratch and reach the same result. This process can be generalized to all your future developments.
