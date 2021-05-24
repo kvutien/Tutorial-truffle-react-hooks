@@ -4,8 +4,8 @@ In the README of this repository, we have seen how to clone, install and run an 
 Let's take advantage of the simplicity of this dApp to see how to develop starting from scratch and reach the same result. This process can be generalized to all your future developments.
 
 * This Part 1 presents the scaffolding of the dApp and the dependencies,
-* In [Part 2](./devTuto-2.md) we code the Solidity frontend,
-* In [Part 3](./devTuto-3.md) we code the JavaScript React backend,
+* In [Part 2](./devTuto-2.md) we code the Solidity backend,
+* In [Part 3](./devTuto-3.md) we code the JavaScript React frontend,
 * In [Part 4](./devTuto-4.md) we publish our work on Github.
 
 ## Environment Set up
@@ -162,4 +162,4 @@ const path = require("path");
 ...
 contracts_build_directory: path.join(__dirname, "client/src/contracts"),
 ```
-Now we can start making the code. We start with [the backend](./devTuto-2.md), that is in the folder `contracts`, and the frontend that is in the folder `client/src`.
+Now we can start making the code. We start with [the Solidity backend](./devTuto-2.md), that is in the folder `contracts`, and the frontend that is in the folder `client/src`.

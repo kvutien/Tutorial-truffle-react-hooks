@@ -4,8 +4,8 @@ In the README of this repository, we have seen how to clone, install and run an 
 Let's take advantage of the simplicity of this dApp to see how to develop starting from scratch and reach the same result. This process can be generalized to all your future developments.
 
 * In [Part 1](./devTuto-1.md) we presented the scaffolding of the dApp and the dependencies,
-* In [Part 2](./devTuto-2.md) we coded the Solidity frontend,
-* In  [Part 3](./devTuto-3.md) we coded the JavaScript React backend
+* In [Part 2](./devTuto-2.md) we coded the Solidity backend,
+* In [Part 3](./devTuto-3.md) we coded the JavaScript React frontend,
 * In this Part 4 we publish our work on Github.
 
 Publishing on Github not only makes your portfolio known publicly, it also prepares for production deployment of your dApp on most advanced public hosting services.

@@ -4,8 +4,8 @@ In the README of this repository, we have seen how to clone, install and run an 
 Let's take advantage of the simplicity of this dApp to see how to develop starting from scratch and reach the same result. This process can be generalized to all your future developments.
 
 * In [Part 1](./devTuto-1.md) we presented the scaffolding of the dApp and the dependencies,
-* In this Part 2 we code the Solidity frontend,
-* In Part 3 we code the JavaScript React backend,
+* In this Part 2 we code the Solidity backend,
+* In [Part 3](./devTuto-3.md) we code the JavaScript React frontend,
 * In [Part 4](./devTuto-4.md) we publish our work on Github.
 
 ## Modify `truffle-config.js`
