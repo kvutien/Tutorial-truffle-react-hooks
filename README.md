@@ -153,12 +153,12 @@ $ npm start
 
 ## Most frequent errors
 ### 1. `truffle develop` does nothing
-When `truffle develop` doesn't display the 10 accounts generated as shown above, this means it could not deploy the local blockchain due to an incompatibility betwseen `truffle 5.1` and the version of `nodeJS` that you're using. Use [nvm](https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/) (node version manager) to downgrade to `node 12.18.4`
+When `truffle develop` doesn't display the 10 accounts generated as shown above, this means it could not deploy the local blockchain due to an incompatibility between `truffle 5.1` and the version of `nodeJS` that you're using. Use [nvm](https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/) (node version manager) to downgrade to `node 12.18.4`
 ``` shell
 $ nvm use 12.18.4
 ```
 ### 2. The last line still shows 'The stored value: not set yet' after MetaMask confirm
-You probably redeployed again the `truffle develop` network, but not reset the account previously imported in Metamask, making the new accounts mistmatch the nonce of the accounts imported previously in MetaMask. 
+You probably redeployed again the `truffle develop` network, but not reset the account previously imported in Metamask, making the new accounts mismatch the nonce of the accounts imported previously in MetaMask. 
 
 Click on the "account" icon of MetaMask (top right) and chose "Settings", "Advanced", "Reset account". Reload the web page.
 
