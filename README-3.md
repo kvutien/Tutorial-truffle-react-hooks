@@ -1,5 +1,5 @@
 # Bonuses - Getting Started with Truffle and React
-
+*(Written in May 2021)*
 ## Bonus 1: Run Automated Tests on the demo
 The demo contains an automated test in JavaScript and another automated test in Solidity. Test Driven Development (TDD) is strongly recommended when you develop blockchain applications because once deployed in production, a smart contract is immutable.
 * The test script in JavaScript runs tests on smart contracts that are already deployed. To execute this, you need to have the `truffle develop` network running and the smart contracts migrated.

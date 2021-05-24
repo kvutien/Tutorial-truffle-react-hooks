@@ -1,5 +1,5 @@
 # General Purpose Setup - Getting Started with Truffle and React
-
+*(Written in May 2021)*
 ## Introduction
 
 The setup process described in the main [README](./README.md) goes through 3 stages. The first 2 are described mainly for the sake of completude but can usually be skipped.

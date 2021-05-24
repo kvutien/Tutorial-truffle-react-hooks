@@ -1,5 +1,5 @@
 # Getting Started with Truffle and React
-
+*(Written in May 2021)*
 ## Introduction
 
 This project is an update to the [Truffle Box "React"](https://www.trufflesuite.com/boxes/react). This Truffle Box illustrates a bare-bones React frontend interfacing to a smart contract. The initial goal of this project was to port the original frontend of ConsenSys into a version that uses React "hooks" instead of using classes, as more and more React frontends use this new paradigm, after React v16 has been issued.
