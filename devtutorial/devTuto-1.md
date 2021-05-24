@@ -132,7 +132,7 @@ truffle-react-new $ tree
     ├── test
     └── truffle-config.js
 ```
-We move inside `client` and test run the minimum React app.
+We move inside `client` and test run the minimum scaffolded React app.
 ```
 browser-create-react-app $ cd /Users/kvutien/development/truffle-react-new/client 
 client $ npm start
