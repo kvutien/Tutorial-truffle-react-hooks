@@ -158,7 +158,7 @@ client $ npm install web3
 Keep note of the following caveats in the required folder structure created by the scaffolding tools `truffle init` and `create-react-app`.
 * To launch the frontend we need to launch the command from the folder that contains `package.json` because this file contains the React script `start`.
 * The file `package.json` needs to be in the same folder that contains the folder `node_modules`.
-* Truffle stores the compilation artefacts, that contain the ABI (Application Binary Interface) of the smart contracts, by default in the folder `build` of the root folder of the project. But the React frontend cannot reach outside the root folder of the React project (here it is the folder `client`). To solve this, we specify in `truffle-config.js` the path where truffle should store the artefacts: 
+* Truffle stores the compilation artefacts, that contain the ABI (Application Binary Interface) of the smart contracts, by default in the folder `build` of the root folder of the project. But the React frontend cannot reach outside the root folder of the React project (here it is the folder `client`). To solve this and allow the frontend to read the ABI of the smart contract, we specify in `truffle-config.js` the path where truffle should store the artefacts: 
 ```javascript
 const path = require("path");
 ...
