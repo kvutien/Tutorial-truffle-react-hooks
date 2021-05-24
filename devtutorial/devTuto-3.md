@@ -22,7 +22,7 @@ We can summarize a typical React web app as follows:
 ![React Web App](./1-ReactdApp.png)
 
 ## Adapt the main program `App.js`
-The `App.js` code uses some idiosyncrasies of React constructs:
+The `App.js` code uses some idiosyncrasies of React "hooks" constructs:
 * The 'state variables' are JavaScript variables that are available everywhere in the program. They serve specially for the HTML to have access to the computed results. They are always initiated at the beginning with the function `useState`. This function returns a callback `setVariableName()` that we use in the code to update the value of the variable `VariableName`.
 * The `useEffect()` hook is called by React whenever the monitored state variable is modified. Its syntax is `useEffect(callback, [monitoredVars])`.
 
