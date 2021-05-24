@@ -7,7 +7,7 @@ The demo contains an automated test in JavaScript and another automated test in 
 
 To run the tests inside `truffle develop`, simply type `test`. All test scripts in the folder `test` are run.
 
-To run the tests from the command line, run a local blockchain network in another console and type `truffle test`
+To run the tests from the command line, run a local blockchain network in another console and type `truffle test`. All test scripts in the folder `test` are run.
 ```shell
 truffle(develop)> test
     Using network 'develop'.
@@ -26,10 +26,10 @@ truffle(develop)> test
 
     2 passing (6s)
 ```
-## Bonus 2: `build` a standalone web app
+## Bonus 2: `build` and `serve` a standalone web app
 While React is run in development, it includes many tools that are not needed in production, for example the tool to reload the web app every time we save a change in the code.
 
-In production, these additions are not needed anymore. React has a script that makes a `build` folder that contains a compacted standalone web app, ready to be served by a hosting service. Assuming that `serve` has been installed globally as shown in the [development setup](./README-2.md#install-serve).), it can be used to run locally the output in the folder `build`. All we need to do is to type
+In production, these additions are not needed anymore. React has a script that makes a `build` folder that contains a compacted standalone web app, ready to be served by a hosting service. Assuming that `serve` has been installed globally (as shown in the [development setup](./README-2.md#install-serve)), it can be used to run locally the output in the folder `build`. All we need to do is to type
 ``` shell
 $ cd client
 $ npm run build
