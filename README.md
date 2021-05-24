@@ -9,7 +9,7 @@ In the process, the following changes were also added:
 * add the information to use `node v12.18.4` instead of the latest `v14`, with which `truffle 15.1` is incompatible and can't deploy its `develop` network
 * modify `App.css` for another theme of colors than the original all-white theme.
 * add more explanations to the original terse page, explaining most common mistakes specially for beginners.
-* add a description of a full cycle of development starting from scratch and using `truffle init` and `create-react-app`.
+* add a [description of a full cycle of development](devtutorial/devTuto-1.md) starting from scratch and using `truffle init` and `create-react-app`.
 
 ## Purpose of the demo
 
