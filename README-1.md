@@ -28,4 +28,6 @@ Then you need to install a browser that is compatible with Metamask, like Chrome
 ```
 Finally, install Metamask extension for your browser and, later below, connect to the `truffle develop` local blockchain network and import the first account of the 10 accounts that are generated.
   * [video guide to install Metamask](https://youtu.be/WAStJtjYI_c) 
+  * MetaMask connection to `develop` blockchain: select menu "Networks", choose "Custom RPC", set network parameters, click "Save" ![MetaMask Network](./screenMetaMaskNet.png)
+  * import first account of `develop` blockchain: click on icon "Account", choose "Import Account", paste account private key copied from `truffle develop`, click "Import" ![MetaMask Network](./screenMetaMaskAccount.png)
 
