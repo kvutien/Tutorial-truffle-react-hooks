@@ -164,4 +164,4 @@ const path = require("path");
 ...
 contracts_build_directory: path.join(__dirname, "client/src/contracts"),
 ```
-Now we can start making the code. We start with [the Solidity backend](./devTuto-2.md), that is in the folder `contracts`, and the frontend that is in the folder `client/src`.
+Now we can start making the code. We start with [the Solidity backend](./devTuto-2.md), that is in the folder `contracts`, and do later the frontend that is in the folder `client/src`.
