@@ -39,7 +39,7 @@ truffle-react-new $ truffle init
 
     3 directories, 3 files
 ```
-We notice that at this stage we have no dependencies package.json, and no folder node_modules because this minimal truffle project has no frontend, no JavaScript.
+We notice that at this stage we have no dependencies `package.json`, and no folder `node_modules` because this minimal truffle project has no frontend, no JavaScript.
 
 ### Set up a git repository
 It is good development practice to make it a git repository and commit this initialized truffle project as a checkpoint.
