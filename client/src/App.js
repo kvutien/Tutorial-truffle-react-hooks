@@ -55,13 +55,40 @@ function App() {
     }, []);
 
     // is called whenever there was any change in the state variables web3, accounts, contract
-    // useEffect( () => {
-    //     if(typeof(web3) != 'undefined'
-    //         && typeof(accounts) != 'undefined'
-    //         && typeof(contract) != 'undefined'){
-    //         runExample();
-    //     }
-    // }, [web3, accounts, contract]);
+    useEffect( () => {
+        const refreshDisplay = () => {
+            console.log('refreshDisplay');
+            return (
+                <div className="App">
+                <h1 className="App-header">Good to Go!</h1>
+                <p>Your Truffle-React Box is installed and ready.</p>
+                <h2>Smart Contract Example</h2>
+                <p>
+                    If your contracts compiled and migrated successfully, below will show
+                    a stored value of 5 (initially set).
+                </p>
+                <p>
+                Try changing the value in the form below.
+                </p>
+                <form onSubmit={runExample}>
+                    <input
+                        type='text' size='4'
+                        onChange={myChangeHandler}
+                    />
+                    <input
+                        type='submit' value='Change the value stored in blockchain'
+                    />
+                </form>
+                <div>The stored value is: <strong>{(storageValue)? storageValue: 'not set yet'}</strong></div>
+                </div>
+            );    
+        }
+        if(typeof(web3) != 'undefined'
+            && typeof(accounts) != 'undefined'
+            && typeof(contract) != 'undefined'){
+            refreshDisplay();
+        }
+    }, [web3, accounts, contract]);
 
     const runExample = async (event) => {
         event.preventDefault();     // let React use runExample instead of default form handler
@@ -70,7 +97,8 @@ function App() {
         if (isNaN(/*this.state.*/updatedValue)) {alert ("Input '" + /*this.state.*/updatedValue+ "' is not a number")}
         // example of interaction with the smart contract
         else try{
-            // Stores a given value, 5 by default
+            // Stores the input value
+            console.log('updatedValue', updatedValue);
             await contract.methods.set(updatedValue).send({ from: accounts[0] });
 
             // Get the value from the contract to prove it worked
