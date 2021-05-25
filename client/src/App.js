@@ -1,6 +1,7 @@
 /*
  * Main entry point of a React application
  * version of Truffle "React" box adapted to use "hooks" instead of classes, starting from React v16
+ * work in progress: this git branch 'userInput' gets value from a user input
  */
 import React, { useState, useEffect } from "react";
 import SimpleStorageContract from "./contracts/SimpleStorage.json";
@@ -10,12 +11,14 @@ import "./App.css";
 
 function App() {
     // initialize the state variables of the application
-    const [storageValue, setStorageValue] = useState(undefined);
+    const [storageValue, setStorageValue] = useState(5);
+    const [updatedValue, setUpdatedValue] = useState(undefined);
     const [web3, setWeb3] = useState(undefined);
     const [accounts, setAccounts] = useState(undefined);
     const [contract, setContract] = useState(undefined);
 
     // equivalent to the componentDidMount function of older React frameworks
+    // connect to blockchain, get the accounts from MetaMask, connect to contract
     useEffect( () => {
         const init = async () => {
             try {
@@ -27,7 +30,10 @@ function App() {
 
                 // Get the contract instance
                 const networkId = await web3.eth.net.getId();
+                console.log('Connecting to blockchain');
+                console.log('networkId', networkId, ', SimpleStorageContract', SimpleStorageContract);
                 const deployedNetwork = SimpleStorageContract.networks[networkId];
+                console.log('deployedNetwork', deployedNetwork);
                 const instance = new web3.eth.Contract(
                     SimpleStorageContract.abi,
                     deployedNetwork && deployedNetwork.address,
@@ -36,6 +42,7 @@ function App() {
                 setWeb3(web3);
                 setContract(instance);
                 setAccounts(accounts);
+                console.log('Blockchain connected');
             } catch (error) {
                 // Catch any errors for any of the above operations
                 alert(
@@ -48,37 +55,47 @@ function App() {
     }, []);
 
     // is called whenever there was any change in the state variables web3, accounts, contract
-    useEffect( () => {
-        const runExample = async () => {
-            // example of interaction with the smart contract
-            try{
-                // Stores a given value, 5 by default
-                await contract.methods.set(5).send({ from: accounts[0] });
+    // useEffect( () => {
+    //     if(typeof(web3) != 'undefined'
+    //         && typeof(accounts) != 'undefined'
+    //         && typeof(contract) != 'undefined'){
+    //         runExample();
+    //     }
+    // }, [web3, accounts, contract]);
 
-                // Get the value from the contract to prove it worked
-                const response = await contract.methods.get().call();
+    const runExample = async (event) => {
+        event.preventDefault();     // let React use runExample instead of default form handler
 
-                // Update state with the result
-                setStorageValue (response);
-            }
-            catch{
-                alert('No contract deployed or account error; please check that MetaMask is on the correct network, reset the account and reload page');
-            }
+        // Alert if input is not a number
+        if (isNaN(/*this.state.*/updatedValue)) {alert ("Input '" + /*this.state.*/updatedValue+ "' is not a number")}
+        // example of interaction with the smart contract
+        else try{
+            // Stores a given value, 5 by default
+            await contract.methods.set(updatedValue).send({ from: accounts[0] });
+
+            // Get the value from the contract to prove it worked
+            const response = await contract.methods.get().call();
+
+            // Update state with the result
+            setStorageValue (response);
         }
-        if(typeof(web3) != 'undefined'
-            && typeof(accounts) != 'undefined'
-            && typeof(contract) != 'undefined'){
-            runExample();
+        catch{
+            alert('No contract deployed or account error; please check that MetaMask is on the correct network, reset the account and reload page');
         }
-    }, [web3, accounts, contract]);
-
-    if (typeof(web3) === 'undefined') {
-        return <div>Loading Web3, accounts, and contract...</div>;
     }
+
+    const myChangeHandler = async (event) => {
+        setUpdatedValue(event.target.value);
+        // console.log('-- App: updatedValue=', updatedValue);
+    }
+
+    // if (typeof(web3) === 'undefined') {
+    //     return <div className="App">Loading Web3, accounts, and contract...</div>;
+    // } test
 
     // equivalent to the render function of older React frameworks
     return (
-        <div className="App">
+            <div className="App">
         <h1 className="App-header">Good to Go!</h1>
         <p>Your Truffle-React Box is installed and ready.</p>
         <h2>Smart Contract Example</h2>
@@ -87,8 +104,17 @@ function App() {
             a stored value of 5 (initially set).
         </p>
         <p>
-            Try changing the value stored on <strong>line 56</strong> of <code>App.js</code>.
+          Try changing the value in the form below.
         </p>
+        <form onSubmit={runExample}>
+            <input
+                type='text' size='4'
+                onChange={myChangeHandler}
+            />
+            <input
+                type='submit' value='Change the value stored in blockchain'
+            />
+        </form>
         <div>The stored value is: <strong>{(storageValue)? storageValue: 'not set yet'}</strong></div>
         </div>
     );
