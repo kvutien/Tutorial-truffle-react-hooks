@@ -11,6 +11,8 @@ In the process, the following changes were also added:
 * add more explanations to the original terse page, explaining most common mistakes specially for beginners.
 * add a [description of a full cycle of development](devtutorial/devTuto-1.md) starting from scratch and using `truffle init` and `create-react-app`.
 
+_**Note**: In branch `userInput` there's a version where the value to be set in the smart contract is given by the user. <br>Version in test_
+
 ## Purpose of the demo
 
 The Truffle Box React illustrates a large part of the  Truffle+React development lifecycle. Its purpose is to familiarize the reader with the dApp development cycle, using Truffle and React.
