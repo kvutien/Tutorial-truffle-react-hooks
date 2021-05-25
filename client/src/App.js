@@ -11,8 +11,8 @@ import "./App.css";
 
 function App() {
     // initialize the state variables of the application
-    const [storageValue, setStorageValue] = useState(5);
-    const [updatedValue, setUpdatedValue] = useState(undefined);
+    const [storageValue, setStorageValue] = useState(undefined);
+    const [inputValue, setInputValue] = useState(undefined);
     const [web3, setWeb3] = useState(undefined);
     const [accounts, setAccounts] = useState(undefined);
     const [contract, setContract] = useState(undefined);
@@ -54,10 +54,11 @@ function App() {
         init();
     }, []);
 
-    // is called whenever there was any change in the state variables web3, accounts, contract
+    // is called if any change in the state variables web3, accounts, contract
     useEffect( () => {
-        const refreshDisplay = () => {
-            console.log('refreshDisplay');
+        const firstDisplay = () => {
+            console.log('firstDisplay');
+            setStorageValue(undefined);
             return (
                 <div className="App">
                 <h1 className="App-header">Good to Go!</h1>
@@ -86,26 +87,27 @@ function App() {
         if(typeof(web3) != 'undefined'
             && typeof(accounts) != 'undefined'
             && typeof(contract) != 'undefined'){
-            refreshDisplay();
+            firstDisplay();
         }
     }, [web3, accounts, contract]);
 
     const runExample = async (event) => {
-        event.preventDefault();     // let React use runExample instead of default form handler
+        event.preventDefault();     // have React use runExample instead of default form handler
 
         // Alert if input is not a number
-        if (isNaN(/*this.state.*/updatedValue)) {alert ("Input '" + /*this.state.*/updatedValue+ "' is not a number")}
+        console.log('runExample - inputValue', inputValue);
+        if (isNaN(/*this.state.*/inputValue)) {alert ("Input '" + /*this.state.*/inputValue+ "' is not a number")}
         // example of interaction with the smart contract
         else try{
             // Stores the input value
-            console.log('updatedValue', updatedValue);
-            await contract.methods.set(updatedValue).send({ from: accounts[0] });
+            await contract.methods.set(inputValue).send({ from: accounts[0] });
 
             // Get the value from the contract to prove it worked
             const response = await contract.methods.get().call();
 
             // Update state with the result
             setStorageValue (response);
+            console.log('runExample - updatedValue', response);
         }
         catch{
             alert('No contract deployed or account error; please check that MetaMask is on the correct network, reset the account and reload page');
@@ -113,8 +115,8 @@ function App() {
     }
 
     const myChangeHandler = async (event) => {
-        setUpdatedValue(event.target.value);
-        // console.log('-- App: updatedValue=', updatedValue);
+        setInputValue(event.target.value);
+        // console.log('-- App: inputValue=', inputValue);
     }
 
     // if (typeof(web3) === 'undefined') {
@@ -136,7 +138,7 @@ function App() {
         </p>
         <form onSubmit={runExample}>
             <input
-                type='text' size='4'
+                type='text' size='4' 
                 onChange={myChangeHandler}
             />
             <input
