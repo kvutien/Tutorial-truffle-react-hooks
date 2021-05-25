@@ -24,7 +24,10 @@ We can summarize a typical React web app as follows:
 ## Adapt the main program `App.js`
 The `App.js` code uses some idiosyncrasies of React "hooks" constructs:
 * The 'state variables' are JavaScript variables that are available everywhere in the program. They serve specially for the HTML to have access to the computed results. They are always initiated at the beginning with the function `useState`. This function returns a callback `setVariableName()` that we use in the code to update the value of the variable `VariableName`.
-* The `useEffect()` hook is called by React whenever the monitored state variable is modified. Remember that we are in an event-driven environment. Its syntax is `useEffect(callback, [monitoredVars])`.
+* The `useEffect()` hook is called by React whenever the monitored variables are modified. Its syntax is `useEffect(callback, [monitoredVars])`. Remember that we are in an event-driven environment, so this hook makes React update the calculation and display whenever there are changes in state variables or in props sent as HTML tags.
+  * If any of the value in the `monitoredVars` changes, the callback will be fired after every render.
+  * When `monitoredVars` is not present, the callback will always be fired after every render.
+  * When it's an empty list, the callback will only be fired once, similar to the callback `componentDidMount` in React classes.
 
 The `App.js` code of our frontend is
 ```javascript

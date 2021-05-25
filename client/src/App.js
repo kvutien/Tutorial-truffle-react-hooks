@@ -73,7 +73,7 @@ function App() {
     }, [web3, accounts, contract]);
 
     if (typeof(web3) === 'undefined') {
-        return <div>Loading Web3, accounts, and contract...</div>;
+        return <div className="App">Loading Web3, accounts, and contract... Reload page</div>;
     }
 
     // equivalent to the render function of older React frameworks
