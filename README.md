@@ -1,4 +1,6 @@
 # Getting Started with Truffle and React
+[![](https://img.shields.io/badge/license-MIT-green)](https://opensource.org/licenses/MIT)
+
 *(Written in May 2021)*
 ## Table of Contents
 * [Introduction](#introduction)
